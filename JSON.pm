@@ -13,7 +13,6 @@ use Readonly;
 
 # Constants.
 Readonly::Array our @EXPORT_OK => qw(err);
-Readonly::Scalar my $EMPTY_STR => q{};
 Readonly::Scalar my $EVAL => 'eval {...}';
 
 # Version.
