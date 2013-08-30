@@ -34,7 +34,7 @@ sub err {
 		&& none { $_ eq $EVAL || $_ =~ /^eval '/ms }
 		map { $_->{'sub'} } @{$stack_ar}) {
 
-		die err_json(@errors)."\n";
+		die err_json(\@errors)."\n";
 
 	# Die for eval.
 	} else {

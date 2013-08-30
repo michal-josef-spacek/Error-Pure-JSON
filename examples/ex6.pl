@@ -21,25 +21,23 @@ $Error::Pure::Output::JSON::PRETTY = 1;
 err '1';
 
 # Output like:
-# [
-#    {
-#       "status" : 1,
-#       "error-pure" : [
-#          {
-#             "msg" : [
-#                "1"
-#             ],
-#             "stack" : [
-#                {
-#                   "sub" : "err",
-#                   "prog" : "example3.pl",
-#                   "args" : "(1)",
-#                   "class" : "main",
-#                   "line" : 21
-#                }
-#             ]
-#          }
-#       ],
-#       "message" : "Foo bar"
-#    }
-# ]
+# {
+#    "status" : 1,
+#    "error-pure" : [
+#       {
+#          "msg" : [
+#             "1"
+#          ],
+#          "stack" : [
+#             {
+#                "sub" : "err",
+#                "prog" : "example3.pl",
+#                "args" : "(1)",
+#                "class" : "main",
+#                "line" : 21
+#             }
+#          ]
+#       }
+#    ],
+#    "message" : "Foo bar"
+# }
