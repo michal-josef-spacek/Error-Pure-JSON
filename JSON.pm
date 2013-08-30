@@ -159,6 +159,7 @@ L<Error::Pure::HTTP::Error>,
 L<Error::Pure::HTTP::ErrorList>,
 L<Error::Pure::HTTP::JSON>,
 L<Error::Pure::HTTP::Print>,
+L<Error::Pure::NoDie>,
 L<Error::Pure::Output::JSON>,
 L<Error::Pure::Output::Text>,
 L<Error::Pure::Utils>.
