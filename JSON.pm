@@ -6,8 +6,8 @@ use strict;
 use warnings;
 
 # Modules.
-use Error::Pure::Utils qw(err_helper);
 use Error::Pure::Output::JSON qw(err_json);
+use Error::Pure::Utils qw(err_helper);
 use List::MoreUtils qw(none);
 use Readonly;
 
