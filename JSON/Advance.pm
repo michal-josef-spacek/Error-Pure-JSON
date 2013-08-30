@@ -1,4 +1,4 @@
-package Error::Pure::JSON;
+package Error::Pure::JSON::Advance;
 
 # Pragmas.
 use base qw(Exporter);
@@ -18,6 +18,9 @@ Readonly::Scalar my $EVAL => 'eval {...}';
 # Version.
 our $VERSION = 0.01;
 
+# Global variables.
+our %ERR_PARAMETERS;
+
 # Ignore die signal.
 $SIG{__DIE__} = 'IGNORE';
 
@@ -34,7 +37,13 @@ sub err {
 		&& none { $_ eq $EVAL || $_ =~ /^eval '/ms }
 		map { $_->{'sub'} } @{$stack_ar}) {
 
-		die err_json(@errors)."\n";
+		my $err_hr = {
+			'error-pure' => \@errors,
+		};
+		foreach my $key (keys %ERR_PARAMETERS) {
+			$err_hr->{$key} = $ERR_PARAMETERS{$key};
+		}
+		die err_json($err_hr)."\n";
 
 	# Die for eval.
 	} else {
@@ -56,11 +65,11 @@ __END__
 
 =head1 NAME
 
-Error::Pure::JSON - Error::Pure module for JSON output.
+Error::Pure::JSON::Advance - Error::Pure module for JSON output with additional parameters.
 
 =head1 SYNOPSIS
 
- use Error::Pure::JSON qw(err);
+ use Error::Pure::JSON::Advance qw(err);
  err 'This is a fatal error', 'name', 'value';
 
 =head1 SUBROUTINES
@@ -81,13 +90,19 @@ Error::Pure::JSON - Error::Pure module for JSON output.
  use warnings;
 
  # Modules.
- use Error::Pure::JSON qw(err);
+ use Error::Pure::JSON::Advance qw(err);
+
+ # Additional parameters.
+ %Error::Pure::JSON::Advance::ERR_PARAMETERS = (
+         'status' => 1,
+         'message' => 'Foo bar',
+ );
 
  # Error.
  err '1';
 
  # Output like:
- # [{"msg":["1"],"stack":[{"sub":"err","prog":"example1.pl","args":"(1)","class":"main","line":11}]}]
+ # [{"status":1,"error-pure":[{"msg":["1"],"stack":[{"sub":"err","prog":"example1.pl","args":"(1)","class":"main","line":17}]}],"message":"Foo bar"}]
 
 =head1 EXAMPLE2
 
@@ -96,13 +111,19 @@ Error::Pure::JSON - Error::Pure module for JSON output.
  use warnings;
 
  # Modules.
- use Error::Pure::JSON qw(err);
+ use Error::Pure::JSON::Advance qw(err);
+
+ # Additional parameters.
+ %Error::Pure::JSON::Advance::ERR_PARAMETERS = (
+         'status' => 1,
+         'message' => 'Foo bar',
+ );
 
  # Error.
  err '1', '2', '3';
 
  # Output like:
- # [{"msg":["1","2","3"],"stack":[{"sub":"err","prog":"example2.pl","args":"(1, 2, 3)","class":"main","line":11}]}]
+ # [{"status":1,"error-pure":[{"msg":["1","2","3"],"stack":[{"sub":"err","prog":"example2.pl","args":"(1, 2, 3)","class":"main","line":17}]}],"message":"Foo bar"}]
 
 =head1 EXAMPLE3
 
@@ -112,7 +133,13 @@ Error::Pure::JSON - Error::Pure module for JSON output.
 
  # Modules.
  use Error::Pure::Output::JSON;
- use Error::Pure::JSON qw(err);
+ use Error::Pure::JSON::Advance qw(err);
+
+ # Additional parameters.
+ %Error::Pure::JSON::Advance::ERR_PARAMETERS = (
+         'status' => 1,
+         'message' => 'Foo bar',
+ );
 
  # Pretty print.
  $Error::Pure::Output::JSON::PRETTY = 1;
@@ -123,18 +150,24 @@ Error::Pure::JSON - Error::Pure module for JSON output.
  # Output like:
  # [
  #    {
- #       "msg" : [
- #          "1"
- #       ],
- #       "stack" : [
+ #       "status" : 1,
+ #       "error-pure" : [
  #          {
- #             "sub" : "err",
- #             "prog" : "example3.pl",
- #             "args" : "(1)",
- #             "class" : "main",
- #             "line" : 15
+ #             "msg" : [
+ #                "1"
+ #             ],
+ #             "stack" : [
+ #                {
+ #                   "sub" : "err",
+ #                   "prog" : "example3.pl",
+ #                   "args" : "(1)",
+ #                   "class" : "main",
+ #                   "line" : 21
+ #                }
+ #             ]
  #          }
- #       ]
+ #       ],
+ #       "message" : "Foo bar"
  #    }
  # ]
 
@@ -159,7 +192,7 @@ L<Error::Pure::HTTP::Error>,
 L<Error::Pure::HTTP::ErrorList>,
 L<Error::Pure::HTTP::JSON>,
 L<Error::Pure::HTTP::Print>,
-L<Error::Pure::JSON::Advance>,
+L<Error::Pure::JSON>,
 L<Error::Pure::NoDie>,
 L<Error::Pure::Output::JSON>,
 L<Error::Pure::Output::Text>,
