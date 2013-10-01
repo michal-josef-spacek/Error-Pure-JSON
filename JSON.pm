@@ -67,7 +67,7 @@ Error::Pure::JSON - Error::Pure module for JSON output.
 
 =over 8
 
-=item B<err(@messages)>
+=item C<err(@messages)>
 
  Process error in JSON format with messages @messages.
  Output affects $Error::Pure::Output::JSON::PRETTY variable.

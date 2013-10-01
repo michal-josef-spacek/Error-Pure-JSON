@@ -1,4 +1,5 @@
 0.04
+ - Rewrite B<> to C<> in doc for code.
 
 0.03 2013-09-21
  - Add dependency for perl (based on Error::Pure).
