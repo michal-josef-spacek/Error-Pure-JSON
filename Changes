@@ -1,4 +1,5 @@
 0.04
+ [Common]
  - Add readme_from directive to Makefile.PL.
  - Fix LICENSE file.
  - Rewrite B<> to C<> in doc for code.
