@@ -7,7 +7,7 @@ use inc::Module::Install;
 
 # Definition.
 abstract 'Perl module for JSON output for structured errors.';
-author 'Michal Špaček <skim@cpan.org>';
+author 'Michal Spacek <skim@cpan.org>';
 license 'bsd';
 name 'Error-Pure-JSON';
 requires 'Error::Pure::Utils' => 0.11;
