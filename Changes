@@ -1,6 +1,7 @@
 0.04
  - Fix LICENSE file.
  - Rewrite B<> to C<> in doc for code.
+ - Update LICENSE AND COPYRIGHT section in doc to my standard.
  - Update Module::Install to 1.14 version.
 
 0.03 2013-09-21
