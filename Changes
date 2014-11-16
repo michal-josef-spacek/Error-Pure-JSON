@@ -6,6 +6,9 @@
  - Update LICENSE AND COPYRIGHT section in doc to my standard.
  - Update Module::Install to 1.14 version.
 
+ [Error::Pure::JSON]
+ - Fix error with undef value.
+
 0.03 2013-09-21
  - Add dependency for perl (based on Error::Pure).
  - Rewrite Changes file to CPAN::Changes::SPEC format.
