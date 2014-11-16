@@ -7,6 +7,7 @@
  - Update Module::Install to 1.14 version.
 
  [Error::Pure::JSON]
+ - Add tests for err().
  - Fix error with undef value.
 
  [Error::Pure::JSON::Advance]
