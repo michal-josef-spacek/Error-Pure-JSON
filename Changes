@@ -10,6 +10,7 @@
  - Fix error with undef value.
 
  [Error::Pure::JSON::Advance]
+ - Add tests for err().
  - Fix error with undef value.
 
 0.03 2013-09-21
