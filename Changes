@@ -1,4 +1,6 @@
 0.05
+ - Update dependency to Error::Pure::Output::JSON with 0.09 version (right
+   JSON dependency).
 
 0.04 2014-11-16T22:44:21+01:00
  [Common]
