@@ -11,7 +11,7 @@ author 'Michal Spacek <skim@cpan.org>';
 license 'bsd';
 name 'Error-Pure-JSON';
 readme_from 'JSON.pm';
-requires 'Error::Pure::Utils' => 0.11;
+requires 'Error::Pure::Utils' => 0.18;
 requires 'Error::Pure::Output::JSON' => 0.09;
 requires 'Exporter' => 0;
 requires 'List::MoreUtils' => 0;

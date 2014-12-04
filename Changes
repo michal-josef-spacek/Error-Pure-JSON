@@ -3,6 +3,9 @@
  - Update dependency to Error::Pure::Output::JSON with 0.09 version (right
    JSON dependency).
 
+ [Error::Pure::JSON]
+ - Clean code across new err_helper().
+
 0.04 2014-11-16T22:44:21+01:00
  [Common]
  - Add readme_from directive to Makefile.PL.
