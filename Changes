@@ -10,6 +10,7 @@
  - Update LICENSE AND COPYRIGHT section in doc.
 
  [Error::Pure::JSON::Advance]
+ - Add tests.
  - Update LICENSE AND COPYRIGHT section in doc.
 
 0.04 2014-11-16T22:44:21+01:00

@@ -24,6 +24,8 @@ README
 SIGNATURE
 t/data/ex1.pl
 t/data/ex2.pl
+t/data/ex3.pl
+t/data/ex4.pl
 t/Error-Pure-JSON-Advance/00-use.t
 t/Error-Pure-JSON-Advance/01-version.t
 t/Error-Pure-JSON-Advance/02-pod_coverage.t
