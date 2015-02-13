@@ -1,4 +1,4 @@
-0.05
+0.05 2015-02-13T23:07:33+01:00
  [Common]
  - Update copyright years.
  - Update dependency to Error::Pure::Output::JSON with 0.09 version (right
