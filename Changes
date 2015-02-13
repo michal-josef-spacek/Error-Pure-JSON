@@ -5,6 +5,7 @@
    JSON dependency).
 
  [Error::Pure::JSON]
+ - Add tests.
  - Clean code across new err_helper().
  - Update LICENSE AND COPYRIGHT section in doc.
 
