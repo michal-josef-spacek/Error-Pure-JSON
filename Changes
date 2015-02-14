@@ -1,4 +1,4 @@
-0.06
+0.06 2015-02-14T11:59:01+01:00
  [Error::Pure::JSON]
  - Rewrite tests to decode JSON to perl structure and compare. Thanks
    Slaven Rezić for reporting (#102114, #102113).
