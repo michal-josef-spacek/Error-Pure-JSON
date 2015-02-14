@@ -27,6 +27,7 @@ test_requires 'File::Object' => 0.05;
 test_requires 'File::Spec::Functions' => 0;
 test_requires 'FindBin' => 0;
 test_requires 'IO::CaptureOutput' => 1.02;
+test_requires 'JSON' => 0;
 test_requires 'Test::More' => 0;
 test_requires 'Test::NoWarnings' => 0;
 test_requires 'Test::Pod' => 0;
