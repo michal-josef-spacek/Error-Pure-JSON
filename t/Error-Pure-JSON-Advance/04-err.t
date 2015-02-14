@@ -9,6 +9,7 @@ use Error::Pure::JSON::Advance qw(err);
 use File::Spec::Functions qw(catfile);
 use FindBin qw($Bin);
 use IO::CaptureOutput qw(capture);
+use JSON qw(decode_json);
 use Test::More 'tests' => 9;
 use Test::NoWarnings;
 
@@ -43,18 +44,59 @@ is($EVAL_ERROR, "undef\n", 'Error blank array.');
 # Test.
 my ($stdout, $stderr);
 capture sub {
-	system $EXECUTABLE_NAME, realpath(catfile($Bin, '..', 'data', 'ex3.pl'));
+	system $EXECUTABLE_NAME, realpath(catfile($Bin, '..', 'data',
+		'ex3.pl'));
 } => \$stdout, \$stderr;
 is($stdout, '', 'Error in standalone script - stdout.');
-my $right_stderr = qr{{"error-pure":\[{"msg":\["Error."\],"stack":\[{"sub":"err","prog":".*?t/data/ex3.pl","args":"\('Error.'\)","class":"main","line":11}\]}\]}};
-like($stderr, $right_stderr, 'Error in standalone script - stderr.');
+my $ret_struct = decode_json($stderr);
+$ret_struct->{'error-pure'}->[0]->{'stack'}->[0]->{'prog'}
+	=~ s/.*?(t\/data\/ex3\.pl)$/$1/ms;
+is_deeply(
+	$ret_struct,
+	{
+		'error-pure' => [{
+			'msg' => ['Error.'],
+			'stack' => [{
+				'args' => "('Error.')",
+				'class' => 'main',
+				'line' => 11,
+				'prog' => 't/data/ex3.pl',
+				'sub' => 'err',
+			}],
+		}],
+	},
+	'Error in standalone script - stderr. Decoded from JSON.',
+);
 
 # Test.
 ($stdout, $stderr) = ('', '');
 capture sub {
-	system $EXECUTABLE_NAME, realpath(catfile($Bin, '..', 'data', 'ex4.pl'));
+	system $EXECUTABLE_NAME, realpath(catfile($Bin, '..', 'data',
+		'ex4.pl'));
 } => \$stdout, \$stderr;
-is($stdout, '', 'Error with parameter and value in standalone script - stdout.');
-$right_stderr = qr{{"error-pure":\[{"msg":\["Error.","Parameter","Value"\],"stack":\[{"sub":"err","prog":".*?t/data/ex4.pl","args":"\('Error.', 'Parameter', 'Value'\)","class":"main","line":11}\]}\]}};
-like($stderr, $right_stderr, 'Error with parameter and value in standalone '.
-	'script - stderr.');
+is($stdout, '', 'Error with parameter and value in standalone script '.
+	'- stdout.');
+$ret_struct = decode_json($stderr);
+$ret_struct->{'error-pure'}->[0]->{'stack'}->[0]->{'prog'}
+	=~ s/.*?(t\/data\/ex4\.pl)$/$1/ms;
+is_deeply(
+	$ret_struct,
+	{
+		'error-pure' => [{
+			'msg' => [
+				'Error.',
+				'Parameter',
+				'Value',
+			],
+			'stack' => [{
+				'args' => "('Error.', 'Parameter', 'Value')",
+				'class' => 'main',
+				'line' => 11,
+				'prog' => 't/data/ex4.pl',
+				'sub' => 'err',
+			}],
+		}],
+	},
+	'Error with parameter and value in standalone script - stderr. '.
+	'Decoded from JSON.',
+);

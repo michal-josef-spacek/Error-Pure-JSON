@@ -3,6 +3,10 @@
  - Rewrite tests to decode JSON to perl structure and compare. Thanks Slaven
    Rezić for reporting (#102114, #102113).
 
+ [Error::Pure::JSON::Advance]
+ - Rewrite tests to decode JSON to perl structure and compare. Thanks Slaven
+   Rezić for reporting (#102114, #102113).
+
 0.05 2015-02-13T23:07:33+01:00
  [Common]
  - Update copyright years.
