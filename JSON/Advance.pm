@@ -16,7 +16,7 @@ Readonly::Array our @EXPORT_OK => qw(err);
 Readonly::Scalar my $EVAL => 'eval {...}';
 
 # Version.
-our $VERSION = 0.07;
+our $VERSION = 0.08;
 
 # Global variables.
 our %ERR_PARAMETERS;
@@ -202,6 +202,6 @@ L<http://skim.cz>
 
 =head1 VERSION
 
-0.07
+0.08
 
 =cut
