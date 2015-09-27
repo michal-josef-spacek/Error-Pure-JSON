@@ -6,15 +6,12 @@ build_requires:
   Cwd: 0
   English: 0
   ExtUtils::MakeMaker: 6.36
-  File::Object: 0.05
   File::Spec::Functions: 0
   FindBin: 0
   IO::CaptureOutput: 1.02
   JSON: 0
   Test::More: 0
   Test::NoWarnings: 0
-  Test::Pod: 0
-  Test::Pod::Coverage: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.36
 distribution_type: module
@@ -30,6 +27,7 @@ no_index:
     - examples
     - inc
     - t
+    - xt
 requires:
   Error::Pure::Output::JSON: 0.09
   Error::Pure::Utils: 0.18
