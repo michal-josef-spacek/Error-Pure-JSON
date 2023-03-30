@@ -1,5 +1,6 @@
 0.08
  [Common]
+ - Fix Makefile.PL which fails with no '.' in @INC.
  - Improve LICENSE AND COPYRIGHT section in doc.
  - Rewrite from IO::CaptureOutput to Capture::Tiny.
  - Update Module::Install to 1.19 version.
