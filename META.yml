@@ -1,7 +1,7 @@
 ---
 abstract: 'Perl module for JSON output for structured errors.'
 author:
-  - 'Michal Spacek <skim@cpan.org>'
+  - 'Michal Josef Spacek <skim@cpan.org>'
 build_requires:
   Capture::Tiny: 0
   Cwd: 0
