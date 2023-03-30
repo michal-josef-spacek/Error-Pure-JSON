@@ -1,12 +1,12 @@
 use strict;
 use warnings;
 
+use Capture::Tiny qw(capture);
 use Cwd qw(realpath);
 use English qw(-no_match_vars);
 use Error::Pure::JSON::Advance qw(err);
 use File::Spec::Functions qw(catfile);
 use FindBin qw($Bin);
-use IO::CaptureOutput qw(capture);
 use JSON qw(decode_json);
 use Test::More 'tests' => 9;
 use Test::NoWarnings;
@@ -40,11 +40,10 @@ eval {
 is($EVAL_ERROR, "undef\n", 'Error blank array.');
 
 # Test.
-my ($stdout, $stderr);
-capture sub {
+my ($stdout, $stderr) = capture sub {
 	system $EXECUTABLE_NAME, realpath(catfile($Bin, '..', 'data',
 		'ex3.pl'));
-} => \$stdout, \$stderr;
+};
 is($stdout, '', 'Error in standalone script - stdout.');
 my $ret_struct = decode_json($stderr);
 $ret_struct->{'error-pure'}->[0]->{'stack'}->[0]->{'prog'}
@@ -67,11 +66,10 @@ is_deeply(
 );
 
 # Test.
-($stdout, $stderr) = ('', '');
-capture sub {
+($stdout, $stderr) = capture sub {
 	system $EXECUTABLE_NAME, realpath(catfile($Bin, '..', 'data',
 		'ex4.pl'));
-} => \$stdout, \$stderr;
+};
 is($stdout, '', 'Error with parameter and value in standalone script '.
 	'- stdout.');
 $ret_struct = decode_json($stderr);
