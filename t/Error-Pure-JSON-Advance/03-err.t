@@ -1,8 +1,6 @@
-# Pragmas.
 use strict;
 use warnings;
 
-# Modules.
 use Cwd qw(realpath);
 use English qw(-no_match_vars);
 use Error::Pure::JSON::Advance qw(err);
@@ -59,7 +57,7 @@ is_deeply(
 			'stack' => [{
 				'args' => "('Error.')",
 				'class' => 'main',
-				'line' => 11,
+				'line' => 9,
 				'prog' => 't/data/ex3.pl',
 				'sub' => 'err',
 			}],
@@ -91,7 +89,7 @@ is_deeply(
 			'stack' => [{
 				'args' => "('Error.', 'Parameter', 'Value')",
 				'class' => 'main',
-				'line' => 11,
+				'line' => 9,
 				'prog' => 't/data/ex4.pl',
 				'sub' => 'err',
 			}],
