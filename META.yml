@@ -36,8 +36,8 @@ requires:
   Readonly: 0
   perl: 5.6.2
 resources:
-  bugtracker: https://github.com/tupinek/Error-Pure-JSON/issues
-  homepage: https://github.com/tupinek/Error-Pure-JSON
+  bugtracker: https://github.com/michal-josef-spacek/Error-Pure-JSON/issues
+  homepage: https://github.com/michal-josef-spacek/Error-Pure-JSON
   license: http://opensource.org/licenses/bsd-license.php
-  repository: git://github.com/tupinek/Error-Pure-JSON
+  repository: git://github.com/michal-josef-spacek/Error-Pure-JSON
 version: '0.08'
